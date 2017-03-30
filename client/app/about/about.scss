@@ -1,0 +1,54 @@
+.about-container {
+  padding: 15px;
+}
+
+.float-avatar {
+  float: left;
+}
+
+.avatar {
+  margin-right: 15px;
+  border-radius: 2px;
+  border: 1px solid rgba(0,0,0,0.1);
+}
+
+.contact-icons {
+  font-size:18px;
+  float: right;
+}
+
+.about-title {
+  margin: 0px;
+}
+
+.about-desc-p {
+  text-align: justify;
+}
+
+.skills-p {
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 2px;
+  font-size: 16px;
+  font-weight: 100;
+}
+
+.icon-container {
+  padding:10px;
+  background-color:rgba(0,0,0,0.015);
+  border:1px solid rgba(0,0,0,0.1);
+}
+
+.icon-p {
+  font-size:48px;
+  text-align:center;
+}
+
+.log-table th, td {
+  padding: 10px !important;
+}
+
+.paging-wrapper {
+  color:#000;
+  padding:10px;
+}

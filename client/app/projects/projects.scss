@@ -1,0 +1,38 @@
+md-grid-list {
+  margin: 8px;
+}
+
+.tile {
+  text-shadow: 1px 0px rgba(0,0,0,0.1);
+}
+
+.tile h3 {
+  color: #000 !important;
+}
+
+md-grid-tile {
+  transition: all 300ms ease-out 50ms;
+}
+
+.desc-wrapper {
+  text-align: justify;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 20px;
+  background-color: rgba(0,0,0,0.03);
+  border-radius: 2px!important;
+}
+
+.desc-sub-title {
+  cursor: default;
+  max-height: 60%;
+  overflow: hidden;
+}
+
+.desc-link {
+  text-align: right;
+  cursor: pointer;
+}

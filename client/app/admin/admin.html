@@ -1,0 +1,201 @@
+<div class="loading" ng-hide="admin.dataLoaded">
+  <div class="center">
+    <md-progress-linear md-mode="query"></md-progress-linear>
+  </div>
+</div>
+
+<md-content class="md-padding fade-in panel-height" layout-xs="column" layout-sm="column" layout="row">
+  <div flex-xs flex-sm="100" flex-md="100" flex-lg="50" flex-xl="50" class="left-col-main" layout="column">
+
+    <md-card md-theme-watch>
+      <md-card-title class="admin-panel">
+        <md-card-title-text>
+          <span class="md-subhead panel-padding">
+             >> Post Manager
+
+            <span class="icon-menu">
+              <i class="fa fa-plus text-success" aria-hidden="true" ng-click="admin.savePost(postForm, admin.postSelection)"></i>
+              <i class="fa fa-eraser text-danger" aria-hidden="true" ng-click="admin.unselectPost(postForm)"></i>
+            </span>
+          </span>
+        </md-card-title-text>
+      </md-card-title>
+
+      <md-card-content>
+        <div class="line err-fade error" md-colors="{background: 'orange-800'}" md-justified ng-show="admin.showPostError">
+          <span class="error-text">
+            <i class="fa fa-window-close pointer" aria-hidden="true" md-colors="{color: 'red-800'}" ng-click="admin.closePostError()"></i>
+            {{admin.postError}}
+          </span>
+        </div>
+
+        <form name="postForm" novalidate>
+          <div class="form-group half-width-form" ng-class="{ 'has-success': postForm.type.$valid && admin.postSubmitted,
+            'has-error': postForm.type.$invalid && admin.postSubmitted }">
+            <label for="title">Type</label>
+            <select class="form-control" ng-model="admin.postSelection.type" name="type" required>
+              <option value="Project">Project</option>
+              <option value="Post">Post</option>
+            </select>
+          </div>
+
+          <div class="form-group err-fade half-width-form" ng-show="admin.postSelection.type==='Project'"
+            ng-class="{ 'has-success': postForm.type.$valid && admin.postSubmitted,
+            'has-error': postForm.type.$invalid && admin.postSubmitted }">
+            <label for="title">Sub-Type</label>
+            <select class="form-control" ng-model="admin.postSelection.sub_type" name="type" required>
+              <option value="angular">angular</option>
+              <option value="cplusplus">cplusplus</option>
+              <option value="docker">docker</option>
+              <option value="javascript">javascript</option>
+              <option value="linux">linux</option>
+              <option value="node">node</option>
+              <option value="py">py</option>
+            </select>
+          </div>
+
+          <div class="form-group" ng-class="{ 'has-success': postForm.title.$valid && admin.postSubmitted,
+            'has-error': postForm.title.$invalid && admin.postSubmitted }">
+            <label for="title">Title</label>
+            <input type="text" class="form-control" ng-model="admin.postSelection.title" name="title" required>
+          </div>
+
+          <div class="form-group" ng-class="{ 'has-success': postForm.subtitle.$valid && admin.postSubmitted,
+            'has-error': postForm.subtitle.$invalid && admin.postSubmitted }">
+            <label for="subtitle">Sub-Title</label>
+            <input type="text" class="form-control" ng-model="admin.postSelection.sub_title" name="subtitle" required>
+          </div>
+
+          <div class="form-group">
+            <label for="subtitle">Git Url</label>
+            <input type="text" class="form-control" ng-model="admin.postSelection.git_url" name="giturl">
+          </div>
+        </form>
+
+        <div flex>
+          <strong>Body</strong>
+          <div id="editor" class="editor"></div>
+        </div>
+        <br/>
+
+        <table st-table="postPointers" st-safe-src="admin.postCollection" class="table table.responsive table-hover">
+          <thead class="thead">
+            <tr>
+              <th st-sort="created" st-sort-default="reverse">
+                Posts ({{admin.postCollection.length}})
+              </th>
+
+              <th colspan="2" style="half-width-form">
+                <input st-search placeholder="Search" class="input-sm form-control" type="search"/>
+              </th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr ng-repeat="post in postPointers">
+              <td class="table-padding-left">
+                {{post.title}}
+              </td>
+
+              <td>
+                {{post.created | date:"MM/dd/yyyy"}}
+              </td>
+
+              <td class="table-menu">
+                <i class="fa fa-pencil" aria-hidden="true" ng-click="admin.selectPost(post)"></i>
+                <i class="fa fa-bomb text-danger" aria-hidden="true" ng-click="admin.deletePost(post)"></i>
+              </td>
+            </tr>
+          </tbody>
+
+          <tfoot>
+            <tr>
+              <td colspan="3">
+                <div st-pagination="" st-items-by-page="5" st-displayed-pages="5"></div>
+              </td>
+            </tr>
+          </tfoot>
+        </table>
+      </md-card-content>
+    </md-card>
+  </div>
+
+  <div flex-xs flex-sm="100" flex-md="100" flex-lg="50" flex-xl="50" layout="column">
+    <md-content layout="column">
+      <md-card md-theme-watch>
+        <md-card-title class="admin-panel">
+          <md-card-title-text>
+            <span class="md-subhead panel-padding">
+                >> Link Manager
+
+                <i class="fa fa-user" aria-hidden="true"></i>
+                <span class="icon-menu">
+                  <i class="fa fa-plus text-success" aria-hidden="true" ng-click="admin.saveLink(linkForm, admin.linkSelection)"></i>
+                  <i class="fa fa-eraser text-danger" aria-hidden="true" ng-click="admin.unselectLink(linkForm)"></i>
+                </span>
+            </span>
+          </md-card-title-text>
+        </md-card-title>
+
+        <md-card-content>
+          <form class="linkForm" name="form" novalidate>
+            <div class="form-group" ng-class="{ 'has-success': form.title.$valid && admin.linkSubmitted,
+                'has-error': form.title.$invalid && admin.linkSubmitted }">
+              <label>Title</label>
+              <input type="text" name="title" class="form-control" ng-model="admin.linkSelection.title" required/>
+            </div>
+
+            <div class="form-group" ng-class="{ 'has-success': form.url.$valid && admin.linkSubmitted,
+                'has-error': form.url.$invalid && admin.linkSubmitted }">
+              <label>Url</label>
+              <input type="text" name="url" class="form-control" ng-model="admin.linkSelection.url" required/>
+            </div>
+
+            <div class="form-group">
+              <label>Description</label>
+              <textarea name="desc" class="form-control text-area-resize" ng-model="admin.linkSelection.desc"></textarea>
+            </div>
+          </form>
+          <br/>
+
+          <table st-table="linkPointers" st-safe-src="admin.linkCollection" class="table table.responsive table-hover">
+            <thead class="thead">
+              <tr>
+                <th st-sort="name">
+                  Links ({{admin.linkCollection.length}})
+                </th>
+
+                <th colspan="3" style="half-width-form">
+                  <input st-search placeholder="Search" class="input-sm form-control" type="search" />
+                </th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr ng-repeat="link in linkPointers">
+                <td style="half-width-form">
+                  {{link.title}}
+                </td>
+
+                <td></td>
+
+                <td class="table-menu">
+                  <i class="fa fa-pencil" aria-hidden="true" ng-click="admin.selectLink(linkForm, link)"></i>
+                  <i class="fa fa-bomb text-danger" aria-hidden="true" ng-click="admin.deleteLink(link)"></i>
+                </td>
+              </tr>
+            </tbody>
+
+            <tfoot>
+              <tr>
+                <td colspan="3">
+                  <div st-pagination="" st-items-by-page="12" st-displayed-pages="5"></div>
+                </td>
+              </tr>
+            </tfoot>
+          </table>
+        </md-card-content>
+      </md-card>
+    </md-content>
+  </div>
+</md-content>

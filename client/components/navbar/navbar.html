@@ -1,0 +1,128 @@
+<div class="fab-wrapper" hide-gt-md>
+  <div class="lock-size" layout="row" layout-align="center center" ng-cloak>
+    <md-fab-speed-dial md-open="false" md-direction="down" class="md-scale">
+      <md-fab-trigger>
+        <md-button aria-label="menu" class="md-fab md-primary fab-icon-size">
+          <i class="fa fa-bars" aria-hidden="true"></i>
+        </md-button>
+      </md-fab-trigger>
+
+      <md-fab-actions>
+        <md-button aria-label="home" class="md-fab md-raised md-mini">
+          <md-text class="md-secondary">
+            <img ui-sref="home" src="../assets/images/System.ico">
+          </md-text>
+        </md-button>
+
+        <md-button aria-label="about" class="md-fab md-raised md-mini">
+          <md-text class="md-secondary">
+            <img ui-sref="about" src="../assets/images/Dog.ico">
+          </md-text>
+        </md-button>
+
+        <md-button aria-label="projects" class="md-fab md-raised md-mini">
+          <md-text class="md-secondary">
+            <img ui-sref="projects" src="../assets/images/Sammlung.ico">
+          </md-text>
+        </md-button>
+
+        <md-button aria-label="admin" class="md-fab md-raised md-mini" ng-show="NavCtrl.isAdmin()">
+          <md-text class="md-secondary">
+            <img ui-sref="admin" src="../assets/images/Fun.ico">
+          </md-text>
+        </md-button>
+      </md-fab-actions>
+    </md-fab-speed-dial>
+  </div>
+</div>
+
+<md-sidenav class="md-sidenav-left viewport-min" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')" md-whiteframe="4">
+  <md-content layout-padding class="slide-content">
+    <div class="nav-slide-slow">
+      <div class="slide-wrapper">
+        <span class="media-heading sidenav-header-title">
+          <i class="fa fa-code sidenav-icon" aria-hidden="true"></i>
+          Patrick Chisholm
+        </span>
+      </div>
+    </div>
+  </md-content>
+
+  <md-content class="sidenav-content">
+    <md-list class="md-dense sidenav-list" flex>
+      <md-list-item class="pathitem sidenav-list-pointer">
+        <p ui-sref="main">
+          Home
+        </p>
+
+        <md-text class="md-secondary">
+          <img ui-sref="main" src="../assets/images/System.ico">
+        </md-text>
+      </md-list-item>
+
+      <md-list-item class="pathitem sidenav-list-pointer">
+        <p ui-sref="about">
+          About Me
+        </p>
+
+        <md-text class="md-secondary sidenav-list-pointer">
+          <img ui-sref="about" src="../assets/images/Dog.ico">
+        </md-text>
+      </md-list-item>
+
+      <md-list-item class="pathitem sidenav-list-pointer">
+        <p ui-sref="projects">
+          Projects
+        </p>
+
+        <md-text class="md-secondary">
+          <img ui-sref="projects" src="../assets/images/Sammlung.ico">
+        </md-text>
+      </md-list-item>
+
+      <md-list-item class="pathitem sidenav-list-pointer">
+        <p ng-click="">
+          Contact Me
+        </p>
+
+        <md-text class="md-secondary">
+          <img ng-click="" src="../assets/images/Packet.ico">
+        </md-text>
+      </md-list-item>
+
+      <md-list-item class="pathitem sidenav-list-pointer" ng-show="NavCtrl.isAdmin()">
+        <p ui-sref="admin">
+          Admin Panel
+        </p>
+
+        <md-text class="md-secondary">
+          <img ui-sref="admin" src="../assets/images/Fun.ico">
+        </md-text>
+      </md-list-item>
+    </md-list>
+
+    <md-list flex class="sidenav-recent-wrapper">
+      <md-subheader class="md-no-sticky sidenav-header-title sidenav-recent-bg">
+        Recent Activity
+      </md-subheader>
+
+      <md-list-item class="md-3-line pathitem sidenav-list-pointer" ng-repeat="post in NavCtrl.recentPosts">
+        <div class="md-list-item-text" ui-sref="entry({id: post._id})">
+          <h3>
+            {{post.title}}
+          </h3>
+
+          <h4>
+            {{post.type}}
+          </h4>
+
+          <p>
+            {{post.created | date:"MM/dd/yyyy"}}
+          </p>
+        </div>
+        <img ng-show="{{post.type==='Project'}}" ng-src="../assets/images/Arbeit 2.ico" class="md-avatar recent-icon">
+        <img ng-show="{{post.type==='Post'}}" ng-src="../assets/images/Buch 8.ico" class="md-avatar recent-icon">
+      </md-list-item>
+    </md-list>
+  </md-content>
+</md-sidenav>

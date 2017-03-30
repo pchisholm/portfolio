@@ -1,0 +1,85 @@
+.left-col-main {
+  border-right: 1px solid rgba(194, 194, 194, 0.3);
+}
+
+md-card {
+  margin: 0px !important;
+  -webkit-box-shadow: inset -1px -3px 24px -27px rgba(0,0,0,0.0) !important;
+  -moz-box-shadow: inset -1px -3px 24px -27px rgba(0,0,0,0.0) !important;
+  box-shadow: inset -1px -3px 24px -27px rgba(0,0,0,0.0) !important;
+}
+
+.avatar-margins {
+  margin-right: 4px;
+}
+
+md-card md-card-title {
+  -webkit-box-shadow: inset -1px -3px 24px -27px rgba(0,0,0,0.0) !important;
+  -moz-box-shadow: inset -1px -3px 24px -27px rgba(0,0,0,0.0) !important;
+  box-shadow: inset -1px -3px 24px -27px rgba(0,0,0,0.0) !important;
+  padding-top: 0px;
+}
+
+.sub-header {
+  text-align: justify;
+}
+
+.post-card {
+    border-bottom: 1px solid rgba(194, 194, 194, 0.3);
+    margin: 0px !important;
+}
+
+.md-padding {
+  padding: 0px;
+}
+
+.post-padding {
+  padding-left: 10px;
+}
+
+.main-paging-panel {
+  text-align: center;
+  background-color: #fff;
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 80;
+  border-top: 1px solid rgba(0,0,0,0.1);
+  -webkit-box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.1);
+  -moz-box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.1);
+  box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.001);
+}
+
+.pagination-button {
+  min-width:15px!important
+}
+
+.right-col-main {
+  padding-bottom: 100px;
+}
+
+.link-card {
+  border-bottom: 1px solid rgba(194, 194, 194, 0.3);
+}
+
+.link-title-padding {
+  padding-top: 16px !important;
+}
+
+.link-subtitle-padding {
+  padding-top: 5px;
+}
+
+.link-repeat-title {
+  padding-top: 5px !important;
+  padding-bottom: 0px !important;
+}
+
+.link-content {
+  padding-top: 0px !important;
+}
+
+.view-all-pointer {
+  cursor: pointer;
+}

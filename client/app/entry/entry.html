@@ -1,0 +1,55 @@
+<div class="loading" ng-hide="EntryCtrl.dataLoaded">
+  <div class="center">
+    <md-progress-linear md-mode="query"></md-progress-linear>
+  </div>
+</div>
+
+<div class="min-entry-height" flex-xs flex-sm="100" flex-md="100" flex-lg="60" flex-xl="60" layout="column" ng-show="EntryCtrl.dataLoaded">
+  <md-card style="large-card-margins">
+    <md-card-header>
+      <md-card-avatar>
+        <img ng-src="../assets/images/bio.png" class="md-avatar avatar-margin">
+      </md-card-avatar>
+
+      <md-card-header-text>
+        <span class="md-title">
+          {{EntryCtrl.entry.type}}
+        </span>
+
+        <span class="md-subhead">
+          {{EntryCtrl.entry.created | date:"MM/dd/yyyy 'at' h:mma"}}
+        </span>
+      </md-card-header-text>
+    </md-card-header>
+
+    <md-card-title class="tile-no-top-padding">
+      <md-card-title-text>
+        <span class="md-headline">
+          {{EntryCtrl.entry.title}}
+        </span>
+
+        <span class="md-subhead text-muted sub-title">
+          {{EntryCtrl.entry.sub_title}}
+        </span>
+      </md-card-title-text>
+    </md-card-title>
+
+    <md-card-content>
+      <div class="display">
+        <div id="displayEditor" class="ql-editor">
+          {{EntryCtrl.constructBody(EntryCtrl.entry)}}
+        </div>
+      </div>
+    </md-card-content>
+
+    <md-card-actions layout="row" layout-align="start center">
+      <md-button>
+        Git
+      </md-button>
+
+      <md-button ui-sref="main">
+        Home
+      </md-button>
+    </md-card-actions>
+  </md-card>
+</div>
