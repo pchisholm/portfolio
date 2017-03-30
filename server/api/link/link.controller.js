@@ -114,6 +114,7 @@ export function upsert(req, res) {
   if(req.body._id) {
     delete req.body._id;
   }
+
   return Link.findOneAndUpdate({_id: req.params.id}, req.body, {upsert: true, setDefaultsOnInsert: true, runValidators: true}).exec()
     .then(respondWithResult(res))
     .catch(handleError(res));

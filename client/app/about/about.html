@@ -8,7 +8,7 @@
   <md-content>
     <md-tabs md-dynamic-height md-border-bottom>
       <md-tab label="About">
-        <md-content flex-xs flex-sm="100" flex-md="100" flex-lg="60" flex-xl="60">
+        <md-content flex-xs flex-sm="100" flex-md="100" flex-lg="60" flex-xl="50">
           <div class="about-container">
             <div class="float-avatar">
               <img ng-src="../assets/images/Headshot.png" width="125px" height="125px" class="avatar">
@@ -23,9 +23,8 @@
             <h3 class="about-title">
               Contacts
             </h3>
-            <br/>
 
-            <p class="about-desc-p">
+            <p class="about-desc-p-first">
               I'm an application developer at IBM Canada located in Halifax, Nova Scotia, Canada.
               I have a range of skills in software & web development, database design & optimization,
               video & graphics processing and ops/scripting. I'm always learning about new topics in
@@ -69,11 +68,11 @@
 
       <md-tab label="Reading Log">
         <md-content class="md-padding">
-          <table st-table="linkPointers" st-safe-src="AboutCtrl.links" class="table table.responsive table-hover max-width log-table">
+          <table st-table="ptArr" st-safe-src="AboutCtrl.links" class="table table.responsive table-hover max-width log-table">
             <thead class="thead">
               <tr>
-                <th st-sort="name">
-                  Count ({{linkPointers.length}})
+                <th class="center-col" st-sort="name">
+                  Count ({{ptArr.length}})
                 </th>
 
                 <th colspan="2">
@@ -82,30 +81,34 @@
               </tr>
 
               <tr>
+                <th class="center-col">
+                  <i class="fa fa-external-link" aria-hidden="true"></i>
+                </th>
+
                 <th st-sort="name">
                   Name
                 </th>
 
-                <th st-sort="desc">
+                <th st-sort="desc" colspan="2">
                   Description
                 </th>
-
-                <th></th>
               </tr>
             </thead>
 
             <tbody>
-              <tr ng-repeat="link in linkPointers">
+              <tr ng-repeat="link in ptArr">
+                <td class="center-col">
+                  <a href="{{link.url}}">
+                    <i class="fa fa-link" aria-hidden="true"></i>
+                  </a>
+                </td>
+
                 <td>
                   {{link.title}}
                 </td>
 
                 <td>
                   {{link.desc}}
-                </td>
-
-                <td>
-                  <a href="{{link.url}}"><i class="fa fa-link" aria-hidden="true"></i></a>
                 </td>
               </tr>
             </tbody>

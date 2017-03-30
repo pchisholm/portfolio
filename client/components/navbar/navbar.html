@@ -1,3 +1,5 @@
+<!-- TO DO: Create 'sub-component for fab-toolbar w/ resuable config' -->
+<!-- TO DO: Seed DB w/ obj {'state': 'main', 'icon_path': '../ico.ico'} -->
 <div class="fab-wrapper" hide-gt-md>
   <div class="lock-size" layout="row" layout-align="center center" ng-cloak>
     <md-fab-speed-dial md-open="false" md-direction="down" class="md-scale">
@@ -8,27 +10,53 @@
       </md-fab-trigger>
 
       <md-fab-actions>
-        <md-button aria-label="home" class="md-fab md-raised md-mini">
+        <md-button aria-label="home" class="md-fab md-raised md-mini" ui-sref="main">
+          <div class="fab-label-wrapper">
+            Home
+          </div>
+
           <md-text class="md-secondary">
-            <img ui-sref="home" src="../assets/images/System.ico">
+            <img src="../assets/images/System.ico">
           </md-text>
         </md-button>
 
-        <md-button aria-label="about" class="md-fab md-raised md-mini">
+        <md-button aria-label="about" class="md-fab md-raised md-mini" ui-sref="about">
+          <div class="fab-label-wrapper">
+            About Me
+          </div>
+
           <md-text class="md-secondary">
-            <img ui-sref="about" src="../assets/images/Dog.ico">
+            <img src="../assets/images/Dog.ico">
           </md-text>
         </md-button>
 
-        <md-button aria-label="projects" class="md-fab md-raised md-mini">
+        <md-button aria-label="projects" class="md-fab md-raised md-mini" ui-sref="projects">
+          <div class="fab-label-wrapper">
+            Projects
+          </div>
+
           <md-text class="md-secondary">
-            <img ui-sref="projects" src="../assets/images/Sammlung.ico">
+            <img src="../assets/images/Sammlung.ico">
           </md-text>
         </md-button>
 
-        <md-button aria-label="admin" class="md-fab md-raised md-mini" ng-show="NavCtrl.isAdmin()">
+        <md-button aria-label="admin" class="md-fab md-raised md-mini" ng-show="NavCtrl.isAdmin()" ui-sref="admin">
+          <div class="fab-label-wrapper">
+            Admin Panel
+          </div>
+
           <md-text class="md-secondary">
-            <img ui-sref="admin" src="../assets/images/Fun.ico">
+            <img src="../assets/images/Fun.ico">
+          </md-text>
+        </md-button>
+
+        <md-button aria-label="contact" class="md-fab md-raised md-mini" ng-hide="NavCtrl.isAdmin()" ui-sref="">
+          <div class="fab-label-wrapper">
+            Contact Me
+          </div>
+
+          <md-text class="md-secondary">
+            <img src="../assets/images/Packet.ico">
           </md-text>
         </md-button>
       </md-fab-actions>
@@ -80,7 +108,7 @@
         </md-text>
       </md-list-item>
 
-      <md-list-item class="pathitem sidenav-list-pointer">
+      <md-list-item class="pathitem sidenav-list-pointer" ng-hide="NavCtrl.isAdmin()">
         <p ng-click="">
           Contact Me
         </p>

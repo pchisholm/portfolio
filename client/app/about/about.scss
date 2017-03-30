@@ -7,22 +7,29 @@
 }
 
 .avatar {
-  margin-right: 15px;
-  border-radius: 2px;
+  margin-right: 10px;
+  border-radius: 0.5px;
   border: 1px solid rgba(0,0,0,0.1);
 }
 
 .contact-icons {
   font-size:18px;
   float: right;
+  padding-top:2px;
 }
 
 .about-title {
   margin: 0px;
 }
 
+.about-desc-p-first {
+  text-align: justify;
+  margin-top: 15px;
+}
+
 .about-desc-p {
   text-align: justify;
+  margin-top: 30px;
 }
 
 .skills-p {
@@ -46,6 +53,10 @@
 
 .log-table th, td {
   padding: 10px !important;
+}
+
+.center-col {
+  text-align: center;
 }
 
 .paging-wrapper {
