@@ -3,8 +3,9 @@
 export default class AdminController {
 
   /*@ngInject*/
-  constructor($http, wysiwyg, post, link) {
+  constructor($http, $timeout, wysiwyg, post, link) {
     this.$http = $http;
+    this.$timeout = $timeout;
     this.wysiwyg = wysiwyg;
     this.post = post;
     this.link = link;
@@ -14,8 +15,6 @@ export default class AdminController {
     this.linkSelection = {};
     this.postEditMode = false;
     this.linkEditMode = false;
-    this.container = document.getElementById('editor');
-    this.editor = this.wysiwyg.initEditor(this.container);
   }
 
   $onInit() {
@@ -31,6 +30,13 @@ export default class AdminController {
     }, err => {
       console.log(err);
       this.initError = true;
+    });
+
+    let self = this;
+
+    this.$timeout(function() {
+      self.container = document.getElementById('editor');
+      self.editor = self.wysiwyg.initEditor(self.container);
     });
   }
 

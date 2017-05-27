@@ -26,7 +26,7 @@ html {
 body {
   height: 100%;
   min-height: 100%;
-  background: #fff;
+  background-image: linear-gradient(to right, #e6e9f0 5%, #eef1f5 15%);
   overflow: auto;
   color: #fff;
   position: relative;
@@ -52,6 +52,19 @@ body {
    margin-top: -150px;
    z-index: 999;
 }
+
+.ng-animate.no-animate {
+    transition: 0s none;
+    -webkit-transition: 0s none;
+    animation: 0s none;
+    -webkit-animation: 0s none;
+}
+
+.wrap-bg {
+  background-image: linear-gradient(to top, #e6e9f0 0%, #eef1f5 100%);
+}
+
+*:focus {outline:none}
 
 .fade-in {
   -webkit-animation: fadein 1s;
@@ -110,11 +123,6 @@ md-content.md-default-theme, md-content {
   background-color: #FFF;
 }
 
-.md-whiteframe-4dp, .md-whiteframe-z2 {
-  box-shadow: 0 0px 0px 0px rgba(0,0,0,.2),
-              0 0px 10px 0 rgba(0,0,0,.14),
-              0 0px 0px 0 rgba(0,0,0,.12);
-}
 
 navbar {
   overflow: hidden;
@@ -123,7 +131,7 @@ navbar {
 md-sidenav,
 md-sidenav.md-locked-open,
 md-sidenav.md-closed.md-locked-open-add-active {
-  border-right: 1px solid rgba(194, 194, 194, 0.3);
+  background-color: rgba(255, 255, 255, 0.5) !important;
   min-height: 100%;
   overflow: hidden;
 }
@@ -143,17 +151,13 @@ md-sidenav.md-closed.md-locked-open-add-active {
 
 .fab-label-wrapper {
   position: fixed;
-  top: 11px;
-  left: -122.5px;
+  top: 10px;
+  left: -125px;
   z-index: 999;
   height: 30px;
   width: 125px;
-  font-size: 14px;
-  line-height: 30px;
-  text-align: center;
-  color: #fff;
-  background-color: rgba(0, 0, 0, 0.8);
-  border-radius: 1px !important;
+  background-color: rgba(0, 0, 0, 0.1);
+  border-radius: 2px !important;
 }
 
 .slide-content {
@@ -180,7 +184,7 @@ md-sidenav.md-closed.md-locked-open-add-active {
 .sidenav-header-title {
   font-size: 18px;
   padding: 8px;
-  background-color: rgba(255,255,255,0.75);
+  background-color: rgba(255,255,255,0);
   border-radius: 0px !important;
 }
 
@@ -202,21 +206,23 @@ md-sidenav.md-closed.md-locked-open-add-active {
 }
 
 .sidenav-recent-bg {
-  background-color: #fff;
+
 }
 
 .recent-icon {
   width: 28px !important;
   height: 28px !important;
-  margin-right: 4px !important;
+  margin: 27.5px 4px 0px 0px !important;
 }
 
 .sidenav-content {
-  margin-top: 8px;
   overflow: hidden;
-  -webkit-box-shadow: 3px -30px 5px 4px rgba(255,255,255,1);
-  -moz-box-shadow: 3px -30px 5px 4px rgba(255,255,255,1);
-  box-shadow: 3px -30px 5px 4px rgba(255,255,255,1);
+  padding-top: 10px;
+  border-top: 2px solid rgba(32, 58, 254, 0.3);
+  background-color: rgba(255,255,255,0);
+  // -webkit-box-shadow: 3px -30px 5px 4px rgba(255,255,255,1);
+  // -moz-box-shadow: 3px -30px 5px 4px rgba(255,255,255,1);
+  // box-shadow: 3px -30px 5px 4px rgba(255,255,255,1);
 }
 
 .md-button.md-fab {
@@ -227,6 +233,7 @@ md-sidenav.md-closed.md-locked-open-add-active {
 
 div.nav-slide-slow {
   height:65px;
+  opacity: 0;
   padding-bottom:0px;
   overflow:hidden;
   background-image: url('../assets/images/cloudpat.png');
@@ -278,6 +285,7 @@ div.nav-slide-slow {
 
 .pathitem:hover{
   background: rgba(204, 229, 255, .2);
+  border-right: 1px solid rgba(32, 58, 254, 0.3);
   font-family: 'Source Code Pro', monospace;
 }
 
@@ -285,7 +293,6 @@ div.nav-slide-slow {
   padding: 0px;
   font-family: 'Lato', sans-serif;
   text-align: justify;
-  width: 90%;
 }
 
 .ql-editor pre {

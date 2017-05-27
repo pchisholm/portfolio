@@ -4,125 +4,127 @@
   </div>
 </div>
 
-<div ng-cloak class="fade-in">
-  <md-content>
-    <md-tabs md-dynamic-height md-border-bottom>
-      <md-tab label="About">
-        <md-content flex-xs flex-sm="100" flex-md="100" flex-lg="60" flex-xl="50">
-          <div class="about-container">
-            <div class="float-avatar">
-              <img ng-src="../assets/images/Headshot.png" width="125px" height="125px" class="avatar">
-            </div>
+<div ng-cloak class="fade-in" ng-show="AboutCtrl.dataLoaded">
+  <md-content class="viewport-min wrap-bg">
+    <div flex-xs flex-sm="100" flex-md="100" flex-lg="60" flex-xl="60"  style="background-color:#fff;margin:10px;border-left: 3px solid rgba(32, 58, 254, 0.3);">
+      <md-tabs md-dynamic-height md-border-bottom md-selected="AboutCtrl.selectedIndex">
+        <md-tab label="About">
+          <md-content>
+            <div class="about-container">
+              <div class="float-avatar">
+                <img ng-src="../assets/images/Headshot.png" width="125px" height="125px" class="avatar">
+              </div>
 
-            <span class="contact-icons">
-              <i class="fa fa-github" aria-hidden="true"></i>
-              <i class="fa fa-linkedin" aria-hidden="true"></i>
-              <i class="fa fa-envelope" aria-hidden="true"></i>
-            </span>
+              <span class="contact-icons">
+                <i class="fa fa-github" aria-hidden="true"></i>
+                <i class="fa fa-linkedin" aria-hidden="true"></i>
+                <i class="fa fa-envelope" aria-hidden="true"></i>
+              </span>
 
-            <h3 class="about-title">
-              Contacts
-            </h3>
+              <h3 class="about-title">
+                Contact Me
+              </h3>
 
-            <p class="about-desc-p-first">
-              I'm an application developer at IBM Canada located in Halifax, Nova Scotia, Canada.
-              I have a range of skills in software & web development, database design & optimization,
-              video & graphics processing and ops/scripting. I'm always learning about new topics in
-              web technology and computer graphics. This website is meant to archive my personal
-              projects, tutorials, reading references and musings. It is not meant to represent
-              the views of IBM or their affiliates.
-            </p>
-
-            <p class="about-desc-p">
-              I'm always interested in new experiences, knowledge and contacts so feel free to contact me!
-              I will do my best to get back to you promptly!
-            </p>
-
-            <p class="skills-p">Skills</p>
-
-            <div class="icon-container">
-              <p class="icon-p">
-                <i class="devicon-angularjs-plain colored"></i>
-                <i class="devicon-babel-plain colored"></i>
-                <i class="devicon-cplusplus-plain colored"></i>
-                <i class="devicon-csharp-plain colored"></i>
-                <i class="devicon-css3-plain colored"></i>
-                <i class="devicon-docker-plain colored"></i>
-                <i class="devicon-dot-net-plain colored"></i>
-                <i class="devicon-git-plain colored"></i>
-                <i class="devicon-gulp-plain colored"></i>
-                <i class="devicon-html5-plain colored"></i>
-                <i class="devicon-javascript-plain colored"></i>
-                <i class="devicon-linux-plain colored"></i>
-                <i class="devicon-mongodb-plain colored"></i>
-                <i class="devicon-mysql-plain colored"></i>
-                <i class="devicon-nodejs-plain colored"></i>
-                <i class="devicon-photoshop-plain colored"></i>
-                <i class="devicon-php-plain colored"></i>
-                <i class="devicon-react-original colored+-"></i>
+              <p class="about-desc-p-first">
+                I'm an application developer at IBM Canada located in Halifax, Nova Scotia, Canada.
+                I have a range of skills in software & web development, database design & optimization,
+                video & graphics processing and ops/scripting. I'm always learning about new topics in
+                web technology and computer graphics. This website is meant to archive my personal
+                projects, tutorials, reading references and musings. It is not meant to represent
+                the views of IBM or their affiliates.
               </p>
+
+              <p class="about-desc-p">
+                I'm always interested in new experiences, knowledge and contacts so feel free to contact me!
+                I will do my best to get back to you promptly!
+              </p>
+
+              <p class="skills-p">Skills</p>
+
+              <div class="icon-container">
+                <p class="icon-p">
+                  <i class="devicon-angularjs-plain colored"></i>
+                  <i class="devicon-babel-plain colored"></i>
+                  <i class="devicon-cplusplus-plain colored"></i>
+                  <i class="devicon-csharp-plain colored"></i>
+                  <i class="devicon-css3-plain colored"></i>
+                  <i class="devicon-docker-plain colored"></i>
+                  <i class="devicon-dot-net-plain colored"></i>
+                  <i class="devicon-git-plain colored"></i>
+                  <i class="devicon-gulp-plain colored"></i>
+                  <i class="devicon-html5-plain colored"></i>
+                  <i class="devicon-javascript-plain colored"></i>
+                  <i class="devicon-linux-plain colored"></i>
+                  <i class="devicon-mongodb-plain colored"></i>
+                  <i class="devicon-mysql-plain colored"></i>
+                  <i class="devicon-nodejs-plain colored"></i>
+                  <i class="devicon-photoshop-plain colored"></i>
+                  <i class="devicon-php-plain colored"></i>
+                  <i class="devicon-react-original colored+-"></i>
+                </p>
+              </div>
             </div>
-          </div>
-        </md-content>
-      </md-tab>
+          </md-content>
+        </md-tab>
 
-      <md-tab label="Reading Log">
-        <md-content class="md-padding">
-          <table st-table="ptArr" st-safe-src="AboutCtrl.links" class="table table.responsive table-hover max-width log-table">
-            <thead class="thead">
-              <tr>
-                <th class="center-col" st-sort="name">
-                  Count ({{ptArr.length}})
-                </th>
+        <md-tab label="Reading Log">
+          <md-content class="log-padding">
+            <table st-table="ptArr" st-safe-src="AboutCtrl.links" class="table table.responsive table-hover max-width log-table">
+              <thead class="thead">
+                <tr>
+                  <th class="center-col" st-sort="name">
+                    Total ({{ptArr.length}})
+                  </th>
 
-                <th colspan="2">
-                  <input st-search placeholder="Search" class="input-sm form-control" type="search" />
-                </th>
-              </tr>
+                  <th colspan="2">
+                    <input st-search placeholder="Search" class="input-sm form-control" type="search" />
+                  </th>
+                </tr>
 
-              <tr>
-                <th class="center-col">
-                  <i class="fa fa-external-link" aria-hidden="true"></i>
-                </th>
+                <tr>
+                  <th st-sort="name">
+                    Name
+                  </th>
 
-                <th st-sort="name">
-                  Name
-                </th>
+                  <th st-sort="desc">
+                    Description
+                  </th>
 
-                <th st-sort="desc" colspan="2">
-                  Description
-                </th>
-              </tr>
-            </thead>
+                  <th class="center-col">
+                    <i class="fa fa-external-link" aria-hidden="true"></i>
+                  </th>
+                </tr>
+              </thead>
 
-            <tbody>
-              <tr ng-repeat="link in ptArr">
-                <td class="center-col">
-                  <a href="{{link.url}}">
-                    <i class="fa fa-link" aria-hidden="true"></i>
-                  </a>
-                </td>
+              <tbody>
+                <tr ng-repeat="link in ptArr">
+                  <td>
+                    {{link.title}}
+                  </td>
 
-                <td>
-                  {{link.title}}
-                </td>
+                  <td>
+                    {{link.desc}}
+                  </td>
 
-                <td>
-                  {{link.desc}}
-                </td>
-              </tr>
-            </tbody>
+                  <td class="center-col">
+                    <a href="{{link.url}}">
+                      <i class="fa fa-link" aria-hidden="true"></i>
+                    </a>
+                  </td>
+                </tr>
+              </tbody>
 
-            <tfoot>
-              <tr>
-                <td colspan="3" class="paging-wrapper">
-                  <div st-pagination="" st-items-by-page="19" st-displayed-pages="5"></div>
-                </td>
-              </tr>
-            </tfoot>
-          </table>
-        </md-content>
-      </md-tab>
-    </md-tabs>
+              <tfoot>
+                <tr>
+                  <td colspan="3" class="paging-wrapper">
+                    <div st-pagination="" st-items-by-page="19" st-displayed-pages="5"></div>
+                  </td>
+                </tr>
+              </tfoot>
+            </table>
+          </md-content>
+        </md-tab>
+      </md-tabs>
+    </div>
   </md-content>
 </div>

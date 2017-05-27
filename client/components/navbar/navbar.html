@@ -11,50 +11,31 @@
 
       <md-fab-actions>
         <md-button aria-label="home" class="md-fab md-raised md-mini" ui-sref="main">
-          <div class="fab-label-wrapper">
-            Home
-          </div>
-
           <md-text class="md-secondary">
+            <md-tooltip md-direction="top" md-visible="tooltipVisible">Home</md-tooltip>
             <img src="../assets/images/System.ico">
           </md-text>
         </md-button>
 
         <md-button aria-label="about" class="md-fab md-raised md-mini" ui-sref="about">
-          <div class="fab-label-wrapper">
-            About Me
-          </div>
-
           <md-text class="md-secondary">
             <img src="../assets/images/Dog.ico">
           </md-text>
         </md-button>
 
         <md-button aria-label="projects" class="md-fab md-raised md-mini" ui-sref="projects">
-          <div class="fab-label-wrapper">
-            Projects
-          </div>
-
           <md-text class="md-secondary">
             <img src="../assets/images/Sammlung.ico">
           </md-text>
         </md-button>
 
         <md-button aria-label="admin" class="md-fab md-raised md-mini" ng-show="NavCtrl.isAdmin()" ui-sref="admin">
-          <div class="fab-label-wrapper">
-            Admin Panel
-          </div>
-
           <md-text class="md-secondary">
             <img src="../assets/images/Fun.ico">
           </md-text>
         </md-button>
 
-        <md-button aria-label="contact" class="md-fab md-raised md-mini" ng-hide="NavCtrl.isAdmin()" ui-sref="">
-          <div class="fab-label-wrapper">
-            Contact Me
-          </div>
-
+        <md-button aria-label="contact" class="md-fab md-raised md-mini" ng-hide="NavCtrl.isAdmin()" ng-click="NavCtrl.openLeftMenu()">
           <md-text class="md-secondary">
             <img src="../assets/images/Packet.ico">
           </md-text>
@@ -65,7 +46,7 @@
 </div>
 
 <md-sidenav class="md-sidenav-left viewport-min" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')" md-whiteframe="4">
-  <md-content layout-padding class="slide-content">
+  <!-- <md-content layout-padding class="slide-content">
     <div class="nav-slide-slow">
       <div class="slide-wrapper">
         <span class="media-heading sidenav-header-title">
@@ -74,9 +55,12 @@
         </span>
       </div>
     </div>
-  </md-content>
+  </md-content> -->
+  <div id="pixelate" style="width:320px;height:50px;background-color:rgba(255,255,255,0.3)" hide-lt-md>
 
-  <md-content class="sidenav-content">
+  </div>
+
+  <md-content class="sidenav-content" style="border-right: 1px solid rgba(32, 58, 254, 0.2);">
     <md-list class="md-dense sidenav-list" flex>
       <md-list-item class="pathitem sidenav-list-pointer">
         <p ui-sref="main">
@@ -89,7 +73,7 @@
       </md-list-item>
 
       <md-list-item class="pathitem sidenav-list-pointer">
-        <p ui-sref="about">
+        <p ui-sref="about({idx: 0})">
           About Me
         </p>
 
@@ -129,7 +113,15 @@
       </md-list-item>
     </md-list>
 
-    <md-list flex class="sidenav-recent-wrapper">
+    <!-- <md-virtual-repeat-container id="vertical-container" style="height:300px;margin:10px">
+      <div md-virtual-repeat="post in NavCtrl.recentPosts"
+          class="repeated-item" flex>
+        {{post.title}}
+      </div>
+    </md-virtual-repeat-container> -->
+  </md-content>
+
+    <md-list flex class="sidenav-recent-wrapper" style="border-right: 1px solid rgba(32, 58, 254, 0.2);">
       <md-subheader class="md-no-sticky sidenav-header-title sidenav-recent-bg">
         Recent Activity
       </md-subheader>
@@ -140,10 +132,6 @@
             {{post.title}}
           </h3>
 
-          <h4>
-            {{post.type}}
-          </h4>
-
           <p>
             {{post.created | date:"MM/dd/yyyy"}}
           </p>
@@ -152,5 +140,4 @@
         <img ng-show="{{post.type==='Post'}}" ng-src="../assets/images/Buch 8.ico" class="md-avatar recent-icon">
       </md-list-item>
     </md-list>
-  </md-content>
 </md-sidenav>

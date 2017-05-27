@@ -4,30 +4,29 @@
   </div>
 </div>
 
-<md-content ng-show="MainCtrl.dataLoaded" class="md-padding fade-in viewport-min" layout-xs="column" layout-sm="column" layout="row">
+<md-content ng-show="MainCtrl.dataLoaded" class="md-padding fade-in viewport-min wrap-bg" layout-xs="column" layout-sm="column" layout="row">
   <div flex-xs flex-sm="100" flex-md="100" flex-lg="70" flex-xl="70" class="left-col-main" layout="column">
 
     <md-card ng-repeat="post in MainCtrl.items" class="post-card">
       <md-card-header>
-        <md-card-avatar>
-          <img ng-src="../assets/images/bio.png" class="md-avatar avatar-margins">
+        <md-card-avatar style="padding:10px;">
+          <i ng-if="post.type==='Project'" class="fa fa-code" style="font-size:18px;" aria-hidden="true"></i>
+          <i ng-if="post.type==='Post'" class="fa fa-sticky-note-o" style="font-size:18px;" aria-hidden="true"></i>
+          <!-- <img ng-src="../assets/images/bio.png" class="md-avatar avatar-margins"> -->
         </md-card-avatar>
         <md-card-header-text>
           <span class="md-title">
-            {{post.type}}
+            {{post.title}}
           </span>
 
           <span class="md-subhead">
-            {{post.created | date:"MM/dd/yyyy 'at' h:mma"}}
+            {{post.created | date:"MM/dd/yyyy"}}
           </span>
         </md-card-header-text>
       </md-card-header>
 
       <md-card-title>
         <md-card-title-text>
-          <span class="md-headline">
-            {{post.title}}
-          </span>
 
           <span class="md-subhead text-muted sub-header">
             {{post.sub_title}}
@@ -54,11 +53,19 @@
       </md-card-actions>
     </md-card>
 
+    <div style="width:100%;height:50px;background-color:#fff;text-align:center;border-left: 3px solid rgba(32, 58, 254, 0.3);">
+      <md-button class="pagination-button" ng-click="MainCtrl.setPage(MainCtrl.pager.currentPage - 1)"><< </md-button>
+      <md-button class="pagination-button" ng-repeat="page in MainCtrl.pager.pages" ng-class="{'md-accent':MainCtrl.pager.currentPage === page}" ng-click="MainCtrl.setPage(page)">
+        {{page}}
+      </md-button>
+      <md-button class="pagination-button"  ng-click="MainCtrl.setPage(MainCtrl.pager.currentPage + 1)"> >></md-button>
+    </div>
+
     <!-- TO DO: Turn this into a paging control directive i.e: <paging length="MainCtrl.pager.pages.length"><paging> -->
-    <ul ng-if="MainCtrl.pager.pages.length" flex-sm="100" flex-md="100" flex-lg="70" flex-xl="70" class="pagination main-paging-panel">
-      <!-- <li ng-class="{disabled:MainCtrl.pager.currentPage === 1}">
+    <!-- <ul ng-if="MainCtrl.pager.pages.length" flex-sm="100" flex-md="100" flex-lg="70" flex-xl="70" class="pagination main-paging-panel">
+      <li ng-class="{disabled:MainCtrl.pager.currentPage === 1}">
             <md-button ng-click="MainCtrl.setPage(1)">First</md-button>
-        </li> -->
+        </li>
 
       <li ng-class="{disabled:MainCtrl.pager.currentPage === 1}">
         <md-button class="pagination-button" ng-click="MainCtrl.setPage(MainCtrl.pager.currentPage - 1)">
@@ -77,20 +84,46 @@
         </md-button>
       </li>
 
-      <!-- <li ng-class="{disabled:MainCtrl.pager.currentPage === MainCtrl.pager.totalPages}">
+      <li ng-class="{disabled:MainCtrl.pager.currentPage === MainCtrl.pager.totalPages}">
             <md-button ng-click="MainCtrl.setPage(MainCtrl.pager.totalPages)">Last</md-button>
-        </li> -->
-    </ul>
+        </li>
+    </ul> -->
   </div>
 
-  <div flex-xs flex-gt-xs="30" layout="column" class="visible-lg">
-    <md-content layout-xs="column" layout="column" class="right-col-main">
+  <div flex-xs flex-gt-xs="30" layout="column" class="visible-lg right-col-main">
+    <md-content layout-xs="column" layout="column" style="border-left: 3px solid rgba(32, 58, 254, 0.3);margin: 0px 0px 0px 0px; !important">
+      <md-card md-theme-watch class="link-card">
+        <md-card-title class="link-title-padding" style="padding: 10px 0px 10px 16px;">
+          <md-card-title-text>
+            <span ng-click="MainCtrl.showQuickFeed=!MainCtrl.showQuickFeed">
+                <i class="fa fa-list-alt" aria-hidden="true"></i>
+                Quick Feed
+              </span>
+          </md-card-title-text>
+        </md-card-title>
+
+        <md-card-content style="padding:0px !important;border-top:1px solid rgba(194,194,194,0.3)" ng-show="MainCtrl.showQuickFeed" class="slider">
+          <md-virtual-repeat-container id="vertical-container" style="height:300px;  -webkit-box-shadow: inset -1px 0px 1px 0px rgba(0,0,0,0.1);
+            -moz-box-shadow: inset -1px 0px 3px 0px rgba(0,0,0,0.1);
+            box-shadow: inset 0.75px 0px 1px 0px rgba(0,0,0,0.1);" ng-cloak>
+            <div md-virtual-repeat="pair in MainCtrl.quickParams" class="repeated-item" flex style="border-bottom: 1px solid rgba(194,194,194,0.3);border-left: 1px solid rgba(32, 58, 254, 0.1);padding:7.5px 15px 7.5px;margin-right:2.5px">
+                <a ui-sref="entry({id: pair._id})">{{pair.title}}</a>
+            </div>
+          </md-virtual-repeat-container>
+        </md-card-content>
+      </md-card>
+
+
+
+    </md-content>
+
+    <md-content layout-xs="column" layout="column" style="border-left: 3px solid rgba(32, 58, 254, 0.3);">
 
       <md-card md-theme-watch class="link-card">
         <md-card-title class="link-title-padding">
           <md-card-title-text>
             <span class="md-subhead" class="link-subtitle-padding">
-                <i class="fa fa-bookmark" aria-hidden="true"></i>
+                <i class="fa fa-bookmark-o" aria-hidden="true" style="font-size:14px"></i>
                 Recent Topics of Interest
               </span>
           </md-card-title-text>
@@ -117,11 +150,11 @@
         </md-card-title>
       </md-card>
 
-      <md-card class="link-card" md-theme-watch>
+      <md-card md-theme-watch>
         <md-card-title style="link-title-padding">
           <md-card-title-text>
-            <span class="md-subhead view-all-pointer link-subtitle-padding">
-                <a ng-click="MainCtrl.$state.go('about')">
+            <span class="md-subhead view-all-pointer link-subtitle-padding" style="text-align: center">
+                <a ui-sref="about({idx: 1})">
                   >> View All
                 </a>
               </span>

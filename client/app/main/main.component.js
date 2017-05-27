@@ -13,6 +13,8 @@ export class MainController {
     this.wysiwyg = wysiwyg;
     this.pagerService = pagerService;
     this.pager = {};
+    this.quickParams = [];
+    this.showQuickFeed = false;
   }
 
   $onInit() {
@@ -20,6 +22,13 @@ export class MainController {
       this.links = res.data;
       this.post.get().then(res => {
         this.posts = res.data.slice().reverse();
+        this.quickParams = res.data.map((p) => {
+          var paramObj = {};
+          paramObj['_id'] = p._id;
+          paramObj['title'] = p.title
+          return paramObj;
+        }).reverse();
+        console.log(this.quickParams)
         this.setPage(1), this.dataLoaded = true;
       }, err => {
         console.log(err);

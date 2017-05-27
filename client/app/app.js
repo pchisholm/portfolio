@@ -12,6 +12,7 @@ import uiBootstrap from 'angular-ui-bootstrap';
 import ngAnimate from 'angular-animate';
 import ngAria from 'angular-aria';
 import ngMaterial from 'angular-material';
+import * as THREE from 'three';
 // import ngMessages from 'angular-messages';
 // import ngValidationMatch from 'angular-validation-match';
 

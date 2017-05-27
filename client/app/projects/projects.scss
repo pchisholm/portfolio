@@ -6,6 +6,10 @@ md-grid-tile {
   transition: all 450ms ease-out 50ms;
 }
 
+md-grid-list md-grid-tile md-grid-tile-footer {
+  background: rgba(0,0,0,0.11);
+}
+
 .tile {
   text-shadow: 1px 0px rgba(0,0,0,0.1);
 }

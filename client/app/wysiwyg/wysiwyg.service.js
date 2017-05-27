@@ -35,7 +35,7 @@ export function wysiwygService() {
 
 	//Read only display config
 	this.displayOptions = {
-		debug: false,
+		debug: 'false',
 		readOnly: true
 	};
 

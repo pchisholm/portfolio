@@ -4,11 +4,14 @@
   </div>
 </div>
 
-<div class="min-entry-height" flex-xs flex-sm="100" flex-md="100" flex-lg="60" flex-xl="60" layout="column" ng-show="EntryCtrl.dataLoaded">
+<md-content class="viewport-min wrap-bg">
+<div class="min-entry-height" flex-xs flex-sm="100" flex-md="100" flex-lg="70" flex-xl="70" layout="column" style="margin: 10px 10px 10px 10px;border-left: 3px solid rgba(32, 58, 254, 0.3);" ng-show="EntryCtrl.dataLoaded">
   <md-card style="large-card-margins">
     <md-card-header>
-      <md-card-avatar>
-        <img ng-src="../assets/images/bio.png" class="md-avatar avatar-margin">
+      <md-card-avatar style="padding:10px;">
+        <i ng-if="EntryCtrl.entry.type==='Project'" class="fa fa-code" style="font-size:18px;" aria-hidden="true"></i>
+        <i ng-if="EntryCtrl.entry.type==='Post'" class="fa fa-sticky-note-o" style="font-size:18px;" aria-hidden="true"></i>
+        <!-- <img ng-src="../assets/images/bio.png" class="md-avatar avatar-margins"> -->
       </md-card-avatar>
 
       <md-card-header-text>
@@ -53,3 +56,4 @@
     </md-card-actions>
   </md-card>
 </div>
+</md-content>

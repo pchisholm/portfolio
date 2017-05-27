@@ -1,5 +1,6 @@
 .left-col-main {
-  border-right: 1px solid rgba(194, 194, 194, 0.3);
+  padding: 10px 10px 0px 10px;
+
 }
 
 md-card {
@@ -25,8 +26,8 @@ md-card md-card-title {
 }
 
 .post-card {
-    border-bottom: 1px solid rgba(194, 194, 194, 0.3);
-    margin: 0px !important;
+    border-left: 3px solid rgba(32, 58, 254, 0.3);
+    margin: 0px 0px 5px 0px !important;
 }
 
 .md-padding {
@@ -40,15 +41,11 @@ md-card md-card-title {
 .main-paging-panel {
   text-align: center;
   background-color: #fff;
-  position: fixed;
+  position: absolute;
+  width: 100%;
   left: 0;
-  right: 0;
   bottom: 0;
-  z-index: 80;
-  border-top: 1px solid rgba(0,0,0,0.1);
-  -webkit-box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.1);
-  -moz-box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.1);
-  box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.001);
+  z-index: 1000;
 }
 
 .pagination-button {
@@ -57,6 +54,18 @@ md-card md-card-title {
 
 .right-col-main {
   padding-bottom: 100px;
+  padding: 10px 10px 52px 0px;
+  height: 100%;
+}
+
+.slider {
+    transition: .2s linear all;
+    height:300px;
+    overflow: hidden;
+}
+
+.slider.ng-hide {
+    height:0;
 }
 
 .link-card {
@@ -82,4 +91,5 @@ md-card md-card-title {
 
 .view-all-pointer {
   cursor: pointer;
+  text-align: center;
 }

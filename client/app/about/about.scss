@@ -9,7 +9,6 @@
 .avatar {
   margin-right: 10px;
   border-radius: 0.5px;
-  border: 1px solid rgba(0,0,0,0.1);
 }
 
 .contact-icons {
@@ -42,17 +41,26 @@
 
 .icon-container {
   padding:10px;
-  background-color:rgba(0,0,0,0.015);
-  border:1px solid rgba(0,0,0,0.1);
+  // background-color:rgba(0,0,0,0.015);
+  // border:1px solid rgba(0,0,0,0.1);
 }
 
 .icon-p {
-  font-size:48px;
+  font-size:36px;
   text-align:center;
+}
+
+.log-padding {
+  padding: 20px;
+}
+
+.log-table {
+  margin-bottom: 0px !important;
 }
 
 .log-table th, td {
   padding: 10px !important;
+  border-bottom: 0px !important;
 }
 
 .center-col {
