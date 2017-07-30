@@ -42,6 +42,7 @@ export default class AdminController {
 
   //Point to post obj from post arr on select
   selectPost(post) {
+    console.log(post.body)
     this.postSubmitted = false;
     this.postEditMode = true;
     this.postSelection = post;

@@ -35,10 +35,11 @@ export class NavbarComponent {
       console.log(err);
       this.initError = true;
     });
+    console.log(this.$window)
 
-    var frag_view = document.getElementById('pixelate');
+    var frag_view = document.getElementById("pixelate");
     var scene, camera, clock, renderer, light, geometry,
-        material, geom, taurusMesh, uniforms;
+        material, geom, geom2, taurusMesh, taurusMesh2, uniforms;
 
     init();
     animate();
@@ -65,21 +66,20 @@ export class NavbarComponent {
           color += sin( position.y * sin( time / 10.0 ) * 40.0 ) + cos( position.x * sin( time / 25.0 ) * 40.0 );
           color += sin( position.x * sin( time / 5.0 ) * 10.0 ) + sin( position.y * sin( time / 35.0 ) * 80.0 );
           color *= sin( time / 10.0 ) * 0.5;
-          gl_FragColor = vec4( vec3( color, color * 0.5, sin( color + time / 3.0 ) * 0.75 ), 1.0 );
+          gl_FragColor = vec4( vec3( color, color * 0.5, sin( color + time / 3.0 ) * 1.75 ), 1.0 );
         }`;
 
         scene = new THREE.Scene(), clock = new THREE.Clock();
+        // scene.fog = new THREE.Fog( 0xcce0ff, 5000, 5 );
 
-        camera = new THREE.PerspectiveCamera(150, 320 / 50, 1, 10000);
+        camera = new THREE.PerspectiveCamera(150, 319.5 / 50, 20, 10000);
         camera.position.z = 1000;
 
-        light = new THREE.AmbientLight(0x404040);
-        scene.add(light);
-
-        geom = new THREE.TorusKnotGeometry(50, 1500, 300, 32, 64);
+        geom = new THREE.TorusKnotGeometry(250, 1500, 300, 32, 64);
+        geom2 = new THREE.TorusKnotGeometry(250, 1500, 600, 32, 64);
 
         uniforms = {
-          time:       {value: 0.0},
+          time:       {value: 1.0},
           resolution: {value: new THREE.Vector2()}
         };
 
@@ -90,22 +90,26 @@ export class NavbarComponent {
         });
 
         taurusMesh = new THREE.Mesh(geom, material);
+        taurusMesh = new THREE.Mesh(geom2, material);
         scene.add(taurusMesh);
+        scene.add(taurusMesh2);
 
         renderer = new THREE.WebGLRenderer({alpha: true});
-        renderer.setSize(319, 50);
+        renderer.setPixelRatio( window.devicePixelRatio );
+        renderer.setSize(319.5, 50);
 
         frag_view.appendChild(renderer.domElement);
     }
 
     function animate() {
-        requestAnimationFrame( animate );
+        requestAnimationFrame(animate);
 
-        taurusMesh.rotation.x += 0.0001;
-        taurusMesh.rotation.y -= 0.0001;
+        taurusMesh.rotation.x -= 0.000001;
+        taurusMesh.rotation.y -= 0.000001;
+        taurusMesh.rotation.z -= 0.0001;
 
         var delta = clock.getDelta();
-        uniforms.time.value += delta * 0.2;
+        uniforms.time.value += delta * 0.4;
 
         renderer.render( scene, camera );
     }

@@ -15,6 +15,7 @@ export class MainController {
     this.pager = {};
     this.quickParams = [];
     this.showQuickFeed = false;
+    this.searchStr = '';
   }
 
   $onInit() {
@@ -28,7 +29,7 @@ export class MainController {
           paramObj['title'] = p.title
           return paramObj;
         }).reverse();
-        console.log(this.quickParams)
+
         this.setPage(1), this.dataLoaded = true;
       }, err => {
         console.log(err);

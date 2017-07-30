@@ -7,7 +7,7 @@
 <md-content ng-show="MainCtrl.dataLoaded" class="md-padding fade-in viewport-min wrap-bg" layout-xs="column" layout-sm="column" layout="row">
   <div flex-xs flex-sm="100" flex-md="100" flex-lg="70" flex-xl="70" class="left-col-main" layout="column">
 
-    <md-card ng-repeat="post in MainCtrl.items" class="post-card">
+    <md-card ng-repeat="post in MainCtrl.items | search:MainCtrl.searchStr track by $index" class="post-card">
       <md-card-header>
         <md-card-avatar style="padding:10px;">
           <i ng-if="post.type==='Project'" class="fa fa-code" style="font-size:18px;" aria-hidden="true"></i>
@@ -92,6 +92,17 @@
 
   <div flex-xs flex-gt-xs="30" layout="column" class="visible-lg right-col-main">
     <md-content layout-xs="column" layout="column" style="border-left: 3px solid rgba(32, 58, 254, 0.3);margin: 0px 0px 0px 0px; !important">
+      <md-card md-theme-watch class="link-card" style="height:55px">
+        <md-card-title style="padding: 0px 15px 0px 15px;">
+          <md-card-title-text>
+            <md-input-container class="md-block" md-no-float style="padding:0px;margin: 10px 0px 0px 0px;">
+              <input ng-model="MainCtrl.searchStr" style="font-size:12px" placeholder="&#9906; Search...">
+            </md-input-container>
+          </md-card-title-text>
+        </md-card-title>
+      </md-card>
+
+
       <md-card md-theme-watch class="link-card">
         <md-card-title class="link-title-padding" style="padding: 10px 0px 10px 16px;">
           <md-card-title-text>
@@ -102,7 +113,7 @@
           </md-card-title-text>
         </md-card-title>
 
-        <md-card-content style="padding:0px !important;border-top:1px solid rgba(194,194,194,0.3)" ng-show="MainCtrl.showQuickFeed" class="slider">
+        <md-card-content style="padding:0px 0px 0px 1px !important;border-top:1px solid rgba(194,194,194,0.3)" ng-show="MainCtrl.showQuickFeed" class="slider">
           <md-virtual-repeat-container id="vertical-container" style="height:300px;  -webkit-box-shadow: inset -1px 0px 1px 0px rgba(0,0,0,0.1);
             -moz-box-shadow: inset -1px 0px 3px 0px rgba(0,0,0,0.1);
             box-shadow: inset 0.75px 0px 1px 0px rgba(0,0,0,0.1);" ng-cloak>

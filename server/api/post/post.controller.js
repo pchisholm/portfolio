@@ -81,7 +81,10 @@ export function indexByType(req, res) {
 
 //Get 5 recent Posts
 export function indexRecent(req, res) {
-  return Post.find({}).limit(parseInt(req.params.limit)).exec()
+  return Post.find({})
+    .sort('-created')
+    .limit(parseInt(req.params.limit))
+    .exec()
     .then(respondWithResult(res))
     .catch(handleError(res));
 }

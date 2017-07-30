@@ -11,31 +11,35 @@
 
       <md-fab-actions>
         <md-button aria-label="home" class="md-fab md-raised md-mini" ui-sref="main">
+          <md-tooltip md-direction="left" md-visible="tooltipVisible">Home</md-tooltip>
           <md-text class="md-secondary">
-            <md-tooltip md-direction="top" md-visible="tooltipVisible">Home</md-tooltip>
             <img src="../assets/images/System.ico">
           </md-text>
         </md-button>
 
         <md-button aria-label="about" class="md-fab md-raised md-mini" ui-sref="about">
+          <md-tooltip md-direction="left" md-visible="tooltipVisible">About Me</md-tooltip>
           <md-text class="md-secondary">
             <img src="../assets/images/Dog.ico">
           </md-text>
         </md-button>
 
         <md-button aria-label="projects" class="md-fab md-raised md-mini" ui-sref="projects">
+          <md-tooltip md-direction="left" md-visible="tooltipVisible">Projects</md-tooltip>
           <md-text class="md-secondary">
             <img src="../assets/images/Sammlung.ico">
           </md-text>
         </md-button>
 
         <md-button aria-label="admin" class="md-fab md-raised md-mini" ng-show="NavCtrl.isAdmin()" ui-sref="admin">
+          <md-tooltip md-direction="left" md-visible="tooltipVisible">Admin</md-tooltip>
           <md-text class="md-secondary">
             <img src="../assets/images/Fun.ico">
           </md-text>
         </md-button>
 
         <md-button aria-label="contact" class="md-fab md-raised md-mini" ng-hide="NavCtrl.isAdmin()" ng-click="NavCtrl.openLeftMenu()">
+          <md-tooltip md-direction="left" md-visible="tooltipVisible">Contact Me</md-tooltip>
           <md-text class="md-secondary">
             <img src="../assets/images/Packet.ico">
           </md-text>

@@ -38,13 +38,14 @@ import constants from './app.constants';
 import util from '../components/util/util.module';
 import socket from '../components/socket/socket.service';
 import smartTable from 'angular-smart-table';
+import searchFilter from './search/search.filter'
 // import textAngular from 'textangular';
 
 import './app.scss';
 
 angular.module('portfolioApp', [ngCookies, ngResource, ngSanitize, 'btford.socket-io', uiRouter,
   uiBootstrap, ngAnimate, ngAria, ngMaterial, _Auth, account, admin, navbar, footer, compile_svg, about, main, projects, constants,
-  socket, smartTable, entry, post, link, wysiwyg, pagerService, util
+  socket, smartTable, searchFilter, entry, post, link, wysiwyg, pagerService, util
 ])
   .config(routeConfig)
   .run(function($rootScope, $location, Auth) {
